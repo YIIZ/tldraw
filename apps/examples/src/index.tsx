@@ -98,7 +98,10 @@ function NoIndex({ children }: { children: React.ReactNode }) {
 	)
 }
 
+import sw from './image-resizer?worker&url'
+
 document.addEventListener('DOMContentLoaded', () => {
+	navigator.serviceWorker.register(sw, { type: 'module' })
 	const rootElement = document.getElementById('root')!
 	const root = createRoot(rootElement!)
 	root.render(

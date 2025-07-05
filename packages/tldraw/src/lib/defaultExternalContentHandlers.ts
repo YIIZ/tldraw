@@ -50,7 +50,7 @@ export const DEFAULT_MAX_IMAGE_DIMENSION = 5000
  * 10mb
  * @public
  */
-export const DEFAULT_MAX_ASSET_SIZE = 10 * 1024 * 1024
+export const DEFAULT_MAX_ASSET_SIZE = 500 * 1024 * 1024
 
 /** @public */
 export interface TLExternalContentProps {

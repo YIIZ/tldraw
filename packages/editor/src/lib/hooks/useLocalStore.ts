@@ -39,10 +39,14 @@ export function useLocalStore(
 				await client.db.storeAsset(asset.id, file)
 				return { src: asset.id }
 			},
-			resolve: async (asset) => {
+			resolve: async (asset, opt) => {
 				if (!asset.props.src) return null
 
 				if (asset.props.src.startsWith('asset:')) {
+					// const s = 2 ** Math.ceil(Math.log2(opt.screenScale * opt.dpr))
+					const s = opt.steppedScreenScale * opt.dpr
+					return `/image-resize/${asset.id}/${Math.floor(asset.props.w * s)}/${Math.floor(asset.props.h * s)}`
+
 					return await objectURLCache.get(asset, async () => {
 						const blob = await client.db.getAsset(asset.id)
 						if (!blob) return null
